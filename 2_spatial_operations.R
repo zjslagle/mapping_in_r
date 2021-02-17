@@ -20,15 +20,17 @@ mapview(catch_map_box)
 
 cities
 
-#get intersection (i.e., overlap) between geometries
+#get intersection (i.e., overlap) between geometries: functionally, this subsets "cities" that fall within
+#       the "catch_map_box" bounding box
 cities <- st_intersection(cities, catch_map_box)
 #note error messages
 cities
 
+#we can also do this with polygons, lines, etc.:
+st_intersection(lake_erie, catch_map_box) %>% plot
 
 
 ### Create "range" circles around release site   ########################
-
 release_radius_bad = st_buffer(release_site, dist = .1) 
 #units are from CRS, so in this case units = degrees
 #error - this is a geographic coordinate system (i.e., on a sphere), so can't measure correctly
@@ -39,7 +41,7 @@ release_radius <- st_transform(release_site, crs = 32617) %>%   #reproject into 
                   st_buffer(dist = 10000)   #creates a circle around BR with radius = 10 km (units = meters)
 
 #compare the two:
-mapview(release_radius_bad, fill = NA)+mapview(release_radius)
+mapview(release_radius_bad)+mapview(release_radius)
 
 ### Make lines and measure distance b/t capture and release sites    ###########
 

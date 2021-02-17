@@ -27,6 +27,8 @@
 if (!require('sf')) install.packages('sf');  # Simple Features package
 if (!require('grid')) install.packages('grid');  # required for printing inset map on active graphics device
 if (!require('mapview')) install.packages('mapview'); # quick interactive maps
+if (!require('ggsn')) install.packages('ggsn'); # north arrows and scale bars in GGplot maps
+if (!require('gganimate')) install.packages('gganimate'); # animations!
 if (!require('tidyverse')) install.packages('tidyverse'); # contains ggplot and many other useful packages
 # END
 
@@ -34,6 +36,7 @@ if (!require('tidyverse')) install.packages('tidyverse'); # contains ggplot and 
 library('sf')
 library('grid')
 library("mapview")
+library("ggsn")
 library('readxl') # part of the tidyverse
 library('tidyverse')
 
