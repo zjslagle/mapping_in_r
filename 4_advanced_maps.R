@@ -1,5 +1,49 @@
 ### Part 4 - Advanced Maps     #################################
 
+### Add inset map     ######################################
+
+#define bounding box
+great_lakes_bounds <- c(xmin = -92.63, 
+                        ymin = 41.18, 
+                        xmax = -75.9, 
+                        ymax = 49.37)
+
+# make inset map - 
+inset_map <- ggplot()+
+  scale_x_continuous(limits = c(great_lakes_bounds["xmin"], 
+                                great_lakes_bounds["xmax"]))+
+  scale_y_continuous(limits = c(great_lakes_bounds["ymin"], 
+                                great_lakes_bounds["ymax"]))+
+  geom_sf(data = us_and_can, #plot land
+          fill = "white")+        
+  geom_sf(data = great_lakes, #plot great lakes
+          fill = "#9ECAE1", 
+          col = "black")+  
+  geom_sf(data = catch_map_box, #adds a box around our main map area
+          col = "black", 
+          fill = NA)+
+  theme_minimal()+
+  theme(axis.text = element_blank(),#remove graticule (degrees/axis labels)
+        panel.border = element_rect(fill = NA,
+                                       color = "black", #add black border around map
+                                       size = 2)) 
+  
+inset_map
+
+# Save PDF map, "print" inset map in viewport over main map
+pdf("figures/Figure 2 inset map.pdf", width = 10, height = 7)
+  our_map_4+
+    theme(legend.position = c(.368,    #adjust legend position
+                              .911))
+  print(inset_map, 
+        vp = viewport(x = 0.22, 
+                     y = 0.85, 
+                     width = 0.3, 
+                     height = 0.3))
+dev.off()
+
+
+
 ### Animated map - where do the bass go?    ######################
 
 #load animation package
@@ -22,14 +66,14 @@ basin_bounds <- c(xmin = -83.3,
 
 #set up the animation
 animated_bass_setup <- our_map_2+ 
-  scale_x_continuous(limits = c(basin_bounds["xmin"], 
-                                basin_bounds["xmax"]))+
+  scale_x_continuous(limits = c(basin_bounds["xmin"], #add new, broader bounds
+                                basin_bounds["xmax"]))+ # (this does throw an error, it'll be OK)
   scale_y_continuous(limits = c(basin_bounds["ymin"], 
                                 basin_bounds["ymax"]))+
   geom_point(data = bass_tracks, 
              aes(x = longitude, 
                  y = latitude, 
-                 group = date),
+                 group = date), #need to group by the factor we're animating over
              pch = 21, 
              color = "black", 
              fill = "darkgreen", 
@@ -45,8 +89,9 @@ animated_bass_setup <- our_map_2+
   shadow_trail(alpha = .4, 
                size = 2)
 
-#create animation!
-# WARNING - this may take a long time!
+# Create animation!  #########################################
+# WARNING - this may take a long time! Takes ~12 minutes on my PC, this can take way longer if 
+#           plotting a complicated map or lots of data. 
 animated_bass = animate(animated_bass_setup, 
                         nframes = 813, # number of frames
                         fps = 18, #frames per second

@@ -24,7 +24,7 @@ our_map_2 <- our_map+
             size = 10, 
             color = "grey")+
   geom_text(aes(x = -82.95, 
-                y = 41.65, 
+                y = 41.625, 
                 label = "LAKE ERIE"),
             fontface = "bold", 
             size = 10, 
@@ -35,7 +35,7 @@ our_map_2
 ### Now - add data      ###############################
 our_map_3 <- our_map_2+
   geom_sf(data = capture_sites, # points for capture sites
-          aes(size = n_bass_caught), #vary size of point by # bass caught
+          aes(size = n_bass_caught), #vary size of point by n_bass_caught
           fill = "lightgreen", 
           color = "black", 
           shape = 21, 
@@ -55,7 +55,8 @@ our_map_3 <- our_map_2+
           fill = NA, 
           lty = 2, 
           lwd = 2, 
-          col = "slategrey") 
+          col = "slategrey")+
+  theme(axis.title = element_blank()) #remove axis titles
 
 our_map_3
 
@@ -86,11 +87,10 @@ our_map_4 <- our_map_3+
                          y = 41.49), 
               symbol = 3,
               scale = 0.13)+
-  theme(legend.position = c(.05,
-                            .911), 
-        axis.title = element_blank(),
-        legend.text = element_text(size = 12), 
-        legend.box = "horoizontal", 
+  theme(legend.position = c(.05,    #fine-tune map components
+                            .911),
+        legend.text = element_text(size = 12),
+        legend.key = element_blank(),
         legend.spacing.y = unit(.1, "mm"), 
         legend.box.background = element_rect(color = "black", 
                                              fill = "white")) 
@@ -115,6 +115,6 @@ dev.off()
 pdf("figures/figure 1 greyscale.pdf", 
     width = 10, height = 7, 
     colormodel = "grey") #colormodel = "grey" or "srgb"
-par(mar=c(5,3,2,2)+0.1) 
-our_map_4
+  par(mar=c(5,3,2,2)+0.1) 
+  our_map_4
 dev.off()
