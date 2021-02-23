@@ -13,19 +13,19 @@ our_map
 
 ### next - better map, specify bounds  ###############
 our_map_2 <- our_map+
-  scale_x_continuous(limits = c(catch_map_bounds["xmin"], 
+  scale_x_continuous(limits = c(catch_map_bounds["xmin"],  #define bounds for map
                                 catch_map_bounds["xmax"]))+
   scale_y_continuous(limits = c(catch_map_bounds["ymin"], 
                                 catch_map_bounds["ymax"]))+
   geom_text(aes(x = -82.8, 
                 y = 41.415, 
-                label = "OHIO"),
+                label = "OHIO"), #add "OHIO" label - note, not a simple feature!
             fontface = "bold", 
             size = 10, 
             color = "grey")+
   geom_text(aes(x = -82.95, 
                 y = 41.625, 
-                label = "LAKE ERIE"),
+                label = "LAKE ERIE"), #add "LAKE ERIE" label
             fontface = "bold", 
             size = 10, 
             color = "slategrey")
@@ -62,11 +62,11 @@ our_map_3
 
 ### Refine legend, add a scale bar & north arrow, tinker with theme settings (e.g. size of text)    ###############################
 our_map_4 <- our_map_3+
-  scale_size_continuous(name = "  Bass\ncaught (n)", #custom scale
+  scale_size_continuous(name = "  Bass\ncaught (n)", #custom legend
                         breaks = c(1,3,5), 
                         labels = c("1-2     ", "3-4     ", "5-6"), 
                         range = c(2,5))+
-  ggsn::scalebar(dist = 5, # add scale bar
+  ggsn::scalebar(dist = 5,                            # add scale bar
                  model = "WGS84",
                  location = "topleft", 
                  dist_unit = "km", 
@@ -79,7 +79,7 @@ our_map_4 <- our_map_3+
                             y = 41.43), 
                  transform = TRUE,
                  border.size = .5)+
-  ggsn::north(x.min = catch_map_bounds["xmin"], 
+  ggsn::north(x.min = catch_map_bounds["xmin"],      # north arrow
               x.max = catch_map_bounds["xmax"], 
               y.min = catch_map_bounds["ymin"], 
               y.max = catch_map_bounds["ymax"],
@@ -87,7 +87,7 @@ our_map_4 <- our_map_3+
                          y = 41.49), 
               symbol = 3,
               scale = 0.13)+
-  theme(legend.position = c(.05,    #fine-tune map components
+  theme(legend.position = c(.05,           #fine-tune map components
                             .911),
         legend.text = element_text(size = 12),
         legend.key = element_blank(),
@@ -100,10 +100,11 @@ our_map_4
 
 
 ### Save map as PDF    ################################
-# you can also use the "ggsave" function or another graphics device like PNG. PDF is used
-#     here because it's commonly accepted by journals.
+# you can also use the "ggsave" function or another graphics device like PNG (see below). 
+#
+#     PDF is used here because it's commonly accepted by journals.
 
-#color map
+#PDF color map
 pdf("figures/figure 1.pdf", 
     width = 10, height = 7, 
     colormodel = "srgb") #colormodel = "grey" or "srgb"
@@ -111,10 +112,19 @@ pdf("figures/figure 1.pdf",
   our_map_4
 dev.off()
 
-#greyscale map - so you can publish color figs and not pay for them!
+#PDF greyscale map - so you can publish color figs and not pay for them!
 pdf("figures/figure 1 greyscale.pdf", 
     width = 10, height = 7, 
     colormodel = "grey") #colormodel = "grey" or "srgb"
   par(mar=c(5,3,2,2)+0.1) 
   our_map_4
 dev.off()
+
+#or as a PNG (easier for quick previews, sending in emails, etc.)
+png(filename = "figures/figure 1.png",
+    width = 10, height = 7, 
+    units = "in",
+    res = 400)
+  our_map_4
+dev.off()
+

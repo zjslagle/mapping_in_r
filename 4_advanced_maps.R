@@ -2,7 +2,7 @@
 
 ### Add inset map     ######################################
 
-#define bounding box
+#define new, wider bounding box
 great_lakes_bounds <- c(xmin = -92.63, 
                         ymin = 41.18, 
                         xmax = -75.9, 
@@ -36,7 +36,7 @@ pdf("figures/Figure 2 inset map.pdf", width = 10, height = 7)
     theme(legend.position = c(.368,    #adjust legend position
                               .911))
   print(inset_map, 
-        vp = viewport(x = 0.22, 
+        vp = viewport(x = 0.22,        # now add inset over main map (uses package gridextra)
                      y = 0.85, 
                      width = 0.3, 
                      height = 0.3))

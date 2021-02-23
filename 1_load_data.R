@@ -75,7 +75,6 @@ st_geometry(great_lakes)
 mapview(city_names)
 
 
-
 ###   Read in other data    ############################
 
 #import locations for bass captured in tournament, also summarize by site
@@ -89,6 +88,7 @@ capture_sites
 capture_sites <- capture_sites %>% st_as_sf(coords = c("Longitude", "Latitude"))
 
 capture_sites
+# note that we skipped an important step here - see below!
 
 #create a new point by hand for the Shelby Street Boat Ramp, the release site for the bass
 release_site = st_as_sf(data.frame(Name = "Shelby St Boat Ramp", 
@@ -118,7 +118,7 @@ st_crs(32617) # AKA UTM zone 17N
 
 # What do the two look like, side by side?
 mapview(capture_sites)+mapview(capture_sites %>% st_set_crs(32617))
-# note the error we get - this isn't the corect way to do this!
+# note the error we get - this isn't the correct way to do this!
 
 # To transform between reference systems:
 capture_sites %>% 
