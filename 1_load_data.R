@@ -73,6 +73,7 @@ st_geometry(great_lakes)
 
 # easiest way to error check locations - use the package/command "mapview"
 mapview(city_names)
+  #if this doesn't work, you may need to install the "gdtools" package
 
 
 ###   Read in other data    ############################
