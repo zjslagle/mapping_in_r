@@ -126,10 +126,12 @@ capture_sites %>%
   st_transform(32617) %>%
   mapview
 #this becomes important in two cases:
-#     2) if we want to transform our simple feature - for example, draw range circles
-#     around a point, get a centroid, make a buffer, or subset a polygon, etc. - because projected
-#     ref systems use regular distance units (e.g., meters) while Geographic reference systems measure
-#     using degrees.
+#     1) ideally we plot all layers using the same projection so they are consistent
+#
+#     2) if we want to transform or do typical spatial operations on our simple feature - for example, 
+#     draw range circles around a point, get a centroid, make a buffer, or subset a polygon, etc. - 
+#     because projected ref systems use regular distance units (e.g., meters) while 
+#     Geographic reference systems measure using degrees.
 
 # transform back to WGS 84
 capture_sites <- st_transform(capture_sites, 4326)

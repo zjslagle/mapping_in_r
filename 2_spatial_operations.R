@@ -52,3 +52,4 @@ transport_lines <- capture_sites %>%
 
 transport_lines
 
+mapview(transport_lines)
