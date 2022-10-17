@@ -71,7 +71,7 @@ st_geometry(city_names)
 plot(great_lakes)
 st_geometry(great_lakes)
 
-# easiest way to error check locations - use the package/command "mapview"
+# easiest way to error check locations - use the package/function "mapview"
 mapview(city_names)
   #if this doesn't work, you may need to install the "gdtools" package
 
@@ -110,15 +110,15 @@ st_crs(4326) # AKA WGS 84; this is the most common geographic CRS in the world.
 # this is a Geographic Reference System, so it's a globe
 
 capture_sites <-  st_set_crs(capture_sites, 4326) # Set the proper CRS
-
 mapview(capture_sites)
 
 # What if we mess this up?
 st_crs(32617) # AKA UTM zone 17N
+wrong_crs_sites <- capture_sites %>% st_set_crs(32617)
 # This is a Projected Reference System, so it's flat.
 
 # What do the two look like, side by side?
-mapview(capture_sites)+mapview(capture_sites %>% st_set_crs(32617))
+mapview(capture_sites)+mapview(wrong_crs_sites)
 # note the error we get - this isn't the correct way to do this!
 
 # To transform between reference systems:

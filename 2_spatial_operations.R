@@ -31,8 +31,7 @@ st_intersection(lake_erie, catch_map_box) %>% plot
 
 
 ### Create "range" circles around release site   ########################
-release_radius_bad = st_buffer(release_site, dist = .1) 
-#units are from CRS, so in this case units = degrees
+release_radius_bad = st_buffer(release_site, dist = 10000) 
 #error - this is a geographic coordinate system (i.e., on a sphere), so can't measure correctly
 mapview(release_radius_bad)
 
