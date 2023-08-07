@@ -38,7 +38,7 @@ our_map_3 <- our_map_2+
           aes(size = n_bass_caught), #vary size of point by n_bass_caught
           fill = "lightgreen", 
           color = "black", 
-          shape = 21, 
+          shape = 21,
           stroke = 1.2)+
   geom_sf(data = release_site, #point for release site
           shape = 24, 

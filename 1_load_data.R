@@ -86,7 +86,8 @@ capture_sites <- read_excel("data/capture_locations.xlsx", na = c(".","NA")) %>%
 capture_sites
 
 #transform data frame into a simple feature
-capture_sites <- capture_sites %>% st_as_sf(coords = c("Longitude", "Latitude"))
+capture_sites <- capture_sites %>% st_as_sf(coords = c("Longitude", "Latitude")) %>%
+  ungroup
 
 capture_sites
 # note that we skipped an important step here - see below!
@@ -100,7 +101,7 @@ release_site = st_as_sf(data.frame(Name = "Shelby St Boat Ramp",
 
 
 ### The Importance of Coordinate Reference System (CRS)   ###########################
-
+sf_use_s2(FALSE)
 # try to plot sites
 mapview(capture_sites)
 #what CRS are we using?

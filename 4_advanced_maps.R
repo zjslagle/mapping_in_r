@@ -26,7 +26,7 @@ inset_map <- ggplot()+
   theme(axis.text = element_blank(),#remove graticule (degrees/axis labels)
         panel.border = element_rect(fill = NA,
                                        color = "black", #add black border around map
-                                       size = 2)) 
+                                       linewidth = 2)) 
   
 inset_map
 
