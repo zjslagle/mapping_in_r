@@ -99,14 +99,15 @@ release_site = st_as_sf(data.frame(Name = "Shelby St Boat Ramp",
                         crs = 4326)
 
 
-### The Importance of Coordinate Reference System (CRS)   ###########################
-sf_use_s2(FALSE)
+### The Importance of Coordinate Reference System (CRS)   ##########################
+
 # try to plot sites
 mapview(capture_sites)
 #what CRS are we using?
 st_crs(capture_sites)
 
-st_crs(4326) # AKA WGS 84; this is the most common geographic CRS in the world.
+st_crs(4326) # AKA WGS 84; this is the most common geographic CRS in my experience.
+# more info: https://epsg.io/4326
 # this is a Geographic Reference System, so it's a globe
 
 capture_sites <-  st_set_crs(capture_sites, 4326) # Set the proper CRS

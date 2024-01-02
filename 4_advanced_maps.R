@@ -108,6 +108,7 @@ animated_bass = animate(animated_bass_setup,
 #       Maps will take longer to animate if they are plotting the
 #       entire US (vs a portion that you cut from an existing
 #       geometry using st_intersection)
+
 # Another note - animation (w/ transition_states) needs number of frames 
 #       to be similar to row number, otherwise will give error about matching row numbers
 

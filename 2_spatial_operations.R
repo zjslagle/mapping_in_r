@@ -16,6 +16,8 @@ catch_map_box <- st_bbox(catch_map_bounds) %>%
   st_as_sfc() %>% #as a simple feature
   st_set_crs(4326) 
 
+mapviewOptions(fgb = FALSE) # this option allows the bounding box to be displayed - just changes how mapview renders
+
 mapview(catch_map_box)
 
 cities
@@ -31,7 +33,7 @@ st_intersection(lake_erie, catch_map_box) %>% plot
 
 
 ### Create "range" circles around release site   ########################
-release_radius_bad = st_buffer(release_site, dist = 1) 
+release_radius_bad = st_buffer(release_site, dist = 10000) 
 #error - this is a geographic coordinate system (i.e., on a sphere), so can't measure correctly
 mapview(release_radius_bad)
 
