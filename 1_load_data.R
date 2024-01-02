@@ -1,6 +1,6 @@
 ####  Mapping in R    #####################
 #
-#     Part 1 - loading data and Coordinate rreference systems   
+#     Part 1 - loading data and Coordinate reference systems   
 #
 #     Feb 26, 2021 - Ohio Chapter AFS - Zak Slagle (Ohio Division of Wildlife, Sandusky)
 #
@@ -18,8 +18,7 @@
 #     We will use data, and recreate a figure, from a Smallmouth Bass tournament release project in Lake Erie:
 #       Slagle, Z. J., M. D. Faust, K. R. Keretz, and M. R. DuFour. 2020. Post-tournament dispersal of smallmouth bass 
 #       in western Lake Erie. Journal of Great Lakes Research 46(1):198–206.
-#     
-# test change
+# 
 
 ###  Packages              #######################################################
 # RUN THIS CODE BEFORE THE WORKSHOP, IF POSSIBLE:
