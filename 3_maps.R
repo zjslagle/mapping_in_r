@@ -31,6 +31,7 @@ our_map_2 <- our_map+
             color = "slategrey")
 
 our_map_2
+# note size of labels in preview pane (vs what will be saved) 
 
 ### Now - add data      ###############################
 our_map_3 <- our_map_2+

@@ -55,7 +55,7 @@ us_and_can <- us_and_can %>% filter(gu_a3 == "CAN"|gu_a3 == "USA") #filter out U
 great_lakes <- great_lakes %>% filter(name_alt == "Great Lakes") # Great Lakes only (otherwise, this is all lakes)
 city_names <- city_names %>% filter(adm1name == "Ohio") #Ohio city names only
 
-  # quick sidenote about pipes (%>%): line 50 is equivalent to:
+  # quick sidenote about pipes (%>%): line 54 is equivalent to:
   us_and_can <- filter(us_and_can, gu_a3 == "CAN"|gu_a3 == "USA")
 
 
@@ -101,7 +101,7 @@ release_site = st_as_sf(data.frame(Name = "Shelby St Boat Ramp",
 
 ### The Importance of Coordinate Reference System (CRS)   ##########################
 
-# try to plot sites
+# try to plot sites - we get a warning :C
 mapview(capture_sites)
 #what CRS are we using?
 st_crs(capture_sites)

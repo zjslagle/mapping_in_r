@@ -11,3 +11,5 @@ Zak Slagle
 Fisheries Biologist  
 Sandusky Fisheries Research Station  
 Ohio Division of Wildlife
+
+To Do: implement [new scale bar and north arrom](https://paleolimbot.github.io/ggspatial/reference/annotation_scale.html) as ggsn is depricated.

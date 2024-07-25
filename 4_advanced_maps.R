@@ -31,7 +31,7 @@ inset_map <- ggplot()+
 inset_map
 
 # Save PDF map, "print" inset map in viewport over main map
-pdf("figures/Figure 2 inset map.pdf", width = 10, height = 7)
+pdf("figures/Figure 1 with inset map.pdf", width = 10, height = 7)
   our_map_4+
     theme(legend.position = c(.368,    #adjust legend position
                               .911))
