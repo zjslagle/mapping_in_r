@@ -47,8 +47,8 @@ mapview(release_radius_bad)+mapview(release_radius)
 ### Make lines and measure distance b/t capture and release sites    ###########
 
 transport_lines <- capture_sites %>%
-  st_union(release_site) %>% # "union" with release site
-  st_cast("LINESTRING") %>%   # "cast" into a linestring
+  st_union(release_site) %>%  # "union" with release site
+  st_cast("LINESTRING") %>%  # "cast" into a linestring
   mutate(dist = round(st_length(.), 1)) # calc distance of each line
 
 transport_lines

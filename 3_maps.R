@@ -67,27 +67,13 @@ our_map_4 <- our_map_3+
                         breaks = c(1,3,5), 
                         labels = c("1-2     ", "3-4     ", "5-6"), 
                         range = c(2,5))+
-  ggsn::scalebar(dist = 5,                            # add scale bar
-                 model = "WGS84",
-                 location = "topleft", 
-                 dist_unit = "km", 
-                 x.min = catch_map_bounds["xmin"], 
-                 x.max = catch_map_bounds["xmax"], 
-                 y.min = catch_map_bounds["ymin"], 
-                 y.max = catch_map_bounds["ymax"],
-                 st.dist = .03, 
-                 anchor = c(x = -83.17, 
-                            y = 41.43), 
-                 transform = TRUE,
-                 border.size = .5)+
-  ggsn::north(x.min = catch_map_bounds["xmin"],      # north arrow
-              x.max = catch_map_bounds["xmax"], 
-              y.min = catch_map_bounds["ymin"], 
-              y.max = catch_map_bounds["ymax"],
-              anchor = c(x = -83.11, 
-                         y = 41.49), 
-              symbol = 3,
-              scale = 0.13)+
+  annotation_scale(unit_category = "metric", # add scale bar
+                   location = "bl")+
+  annotation_north_arrow(which_north = "true", # add orth arrow
+                         height = unit(0.7, "cm"),
+                         width = unit(0.7, "cm"),
+                         pad_y = unit(0.75, "cm"),
+                         location = "bl")+
   theme(legend.position = c(.05,           #fine-tune map components
                             .911),
         legend.text = element_text(size = 12),

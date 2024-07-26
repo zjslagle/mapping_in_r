@@ -21,7 +21,8 @@ inset_map <- ggplot()+
           col = "black")+  
   geom_sf(data = catch_map_box, #adds a box around our main map area
           col = "black", 
-          fill = NA)+
+          fill = NA,
+          linewidth = .8)+
   theme_minimal()+
   theme(axis.text = element_blank(),#remove graticule (degrees/axis labels)
         panel.border = element_rect(fill = NA,
